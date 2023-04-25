@@ -6,7 +6,7 @@ Premendo il tasto m5, si visualizzano i valori.
 Tenendo premuto il tasto m5 per tre secondi, il servo ruota di 90 gradi; ripremendolo per altri tre secondi, il servo ruota di -90 gradi. 
 Se la temperatura supera i 60°C o l'umidità il 70%, il servo ruota di 90 gradi.
 
-### M5stickc - DHt11
+### M5stickc - DHT11
 La connessione tra m5stickc e il sensore di temparatura è molto semplice
 
 m5stickc | dht11 (con restistenza di pullup)
