@@ -15,3 +15,13 @@ m5stickc | dht11 (con restistenza di pullup)
 G26 | pin 1 
 3v3 | pin 2 (VCC) 
 GND | pin 3 (GND) 
+
+Per la lettura dei valori di temperatura e umidità si può usare la libreria builtin dht: https://docs.micropython.org/en/latest/esp8266/tutorial/dht.html
+```python
+import dht
+import machine
+d = dht.DHT11(machine.Pin(26))
+d.measure()
+d.temperature()
+d.humidity()
+```
