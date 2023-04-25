@@ -12,6 +12,6 @@ La connessione tra m5stickc e sensore di temparatura è molto semplice. Si presu
 
 m5stickc | dht11 (con restistenza di pullup)
 ------------ | -------------
-G26 | HT11 pin 1 
-3v3 | DHT11 pin 2 (VCC) 
-GND | DHT11 pin 3 (GND) 
+G26 | pin 1 
+3v3 | pin 2 (VCC) 
+GND | pin 3 (GND) 
