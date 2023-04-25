@@ -1,4 +1,4 @@
-
+Obiettivo del progetto
 Il dispositivo M5stickC ogni mezzora legge umidità e temperatura rilevati attraverso il sensore ht11. I valori di temperatura e umidità rilevati e il livello di tensione corrente della batteria dell'm5stickc vengono memorizzati localmente.
 Premendo il tasto m5, si visualizzano i valori. 
 
