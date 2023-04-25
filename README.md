@@ -25,3 +25,4 @@ d.measure()
 d.temperature()
 d.humidity()
 ```
+La lettura cadenzata può essere fatta gestendo il deep sleep. Es. https://community.m5stack.com/topic/2874/deep-sleep-with-micropython
