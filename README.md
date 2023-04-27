@@ -122,6 +122,7 @@ imu.power(False)
 # Disattiva il display LCD
 lcd.clear()
 lcd.poweroff()
+```
 
 In questo esempio, viene inizializzato il display LCD e il sensore di movimento utilizzando le istruzioni `lcd.init()` e `imu.init()`. Successivamente, viene disattivato il sensore di movimento utilizzando l'istruzione `imu.power(False)`, per poi disattivare il display LCD utilizzando l'istruzione `lcd.poweroff()`.
 
