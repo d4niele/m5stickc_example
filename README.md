@@ -177,7 +177,7 @@ charge_current = axp.get_battery_charge_current()
 # Stampa il valore corrente di carica della batteria
 print('Charge current = {} mA'.format(charge_current))
 ```
-# Logging dei dati
+## Logging dei dati
 
 Ecco un esempio di come utilizzare il modulo logging per il rotate logging in Micropython:
 
