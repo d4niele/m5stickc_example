@@ -175,3 +175,29 @@ charge_current = axp.get_battery_charge_current()
 # Stampa il valore corrente di carica della batteria
 print('Charge current = {} mA'.format(charge_current))
 ```
+Ecco un esempio di come utilizzare il modulo logging per il rotate logging in Micropython:
+
+```python
+import logging
+import logging.handlers
+
+# Configurazione del logger
+logger = logging.getLogger("my_logger")
+logger.setLevel(logging.DEBUG)
+
+# Rotazione del registro ogni giorno
+handler = logging.handlers.TimedRotatingFileHandler('example.log', when='midnight', backupCount=7)
+handler.setLevel(logging.DEBUG)
+
+# Impostazione del formato di logging
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# Aggiunta del gestore al logger
+logger.addHandler(handler)
+
+# Esempio di messaggio di logging
+logger.debug('Questo è un messaggio di debug')
+```
+
+In questo esempio, utilizziamo la classe `TimedRotatingFileHandler` per ruotare il registro ogni mezzanotte e mantenere un massimo di 7 file di backup. Il resto della configurazione del logger è simile a quello che si farebbe in Python standard.
