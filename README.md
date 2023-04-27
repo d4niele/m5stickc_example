@@ -86,3 +86,57 @@ Le istruzioni `axp.setLDO2State(False)` e `axp.setLDO3State(False)` consentono d
 Tuttavia, è importante notare che disabilitare questi regolatori di tensione potrebbe causare problemi con alcuni componenti dell'M5StickC, come ad esempio il display LCD o la fotocamera. Inoltre, se si disabilitano questi regolatori, il dispositivo potrebbe non funzionare correttamente se viene alimentato con una tensione inferiore a quella necessaria per alimentare direttamente i componenti.
 
 Quindi, se si decide di disabilitare i regolatori di tensione LDO2 e LDO3, è importante prestare attenzione alle specifiche dei componenti dell'M5StickC e alle condizioni di alimentazione per assicurarsi che il dispositivo funzioni correttamente. In alternativa, si potrebbe considerare l'utilizzo di altre tecniche per ridurre il consumo di corrente, come ad esempio la messa in sleep mode dei componenti non utilizzati o la riduzione della frequenza di clock del microcontrollore.
+
+Tre esempi di codice che utilizzano le tecniche descritte in precedenza per ridurre il consumo di corrente dell'M5StickC:
+
+1. Utilizzo della modalità sleep:
+
+```python
+import machine
+
+# Inserire qui il codice principale
+
+# Mette l'M5StickC in modalità sleep per 30 secondi
+machine.sleep(30000)
+
+# Riprende l'esecuzione del codice
+print('Wake up!')
+```
+
+In questo esempio, l'M5StickC entra in modalità sleep per 30 secondi utilizzando l'istruzione `machine.sleep(30000)`. Successivamente, l'esecuzione del codice riprende e viene stampato il messaggio "Wake up!".
+
+2. Disattivazione di componenti non utilizzati:
+
+```python
+from m5stack import lcd, imu
+
+# Inizializza il display LCD e il sensore di movimento
+lcd.init()
+imu.init()
+
+# Disattiva il sensore di movimento
+imu.power(False)
+
+# Inserire qui il codice principale
+
+# Disattiva il display LCD
+lcd.clear()
+lcd.poweroff()
+
+In questo esempio, viene inizializzato il display LCD e il sensore di movimento utilizzando le istruzioni `lcd.init()` e `imu.init()`. Successivamente, viene disattivato il sensore di movimento utilizzando l'istruzione `imu.power(False)`, per poi disattivare il display LCD utilizzando l'istruzione `lcd.poweroff()`.
+
+3. Riduzione della frequenza di clock:
+
+```python
+import machine
+
+# Riduce la frequenza di clock a 80 MHz
+machine.freq(80000000)
+
+# Inserire qui il codice principale
+
+# Ripristina la frequenza di clock originale
+machine.freq(240000000)
+```
+
+In questo esempio, viene ridotta la frequenza di clock del microcontrollore a 80 MHz utilizzando l'istruzione `machine.freq(80000000)`. Successivamente, viene eseguito il codice principale, per poi ripristinare la frequenza di clock originale utilizzando l'istruzione `machine.freq(240000000)`.
