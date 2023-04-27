@@ -55,6 +55,7 @@ Ecco un esempio di codice che mette l'M5StickC in deep sleep e lo fa risvegliare
 import machine
 import esp
 from m5stack import btnA
+from m5stack import axp192
 
 # Imposta il tempo di sleep a 30 minuti
 sleep_time = 1800000
@@ -77,9 +78,16 @@ btnA.wasPressed(buttonA_wasPressed)
 # Stampa un messaggio di debug
 print('Entering deep sleep')
 
+# Disabilita i regolatori di tensione LDO2 e LDO3
+axp192.setLDO2State(False)
+axp192.setLDO3State(False)
 # Mette l'M5StickC in sleep mode per il tempo impostato
 machine.deepsleep(sleep_time)
 ```
 
 Questo codice farà entrare l'M5StickC in deep sleep e lo farà risvegliare dopo 30 minuti o dopo aver premuto il tasto M5. Quando il tasto M5 viene premuto, il trigger di risveglio viene resettato e il dispositivo viene messo in sleep mode.
-    
+Le istruzioni `axp.setLDO2State(False)` e `axp.setLDO3State(False)` consentono di disabilitare i regolatori di tensione LDO2 e LDO3 dell'AXP192, il chip di gestione dell'alimentazione presente sull'M5StickC. Questo può ridurre il consumo di corrente del dispositivo quando questi regolatori non sono necessari.
+
+Tuttavia, è importante notare che disabilitare questi regolatori di tensione potrebbe causare problemi con alcuni componenti dell'M5StickC, come ad esempio il display LCD o la fotocamera. Inoltre, se si disabilitano questi regolatori, il dispositivo potrebbe non funzionare correttamente se viene alimentato con una tensione inferiore a quella necessaria per alimentare direttamente i componenti.
+
+Quindi, se si decide di disabilitare i regolatori di tensione LDO2 e LDO3, è importante prestare attenzione alle specifiche dei componenti dell'M5StickC e alle condizioni di alimentazione per assicurarsi che il dispositivo funzioni correttamente. In alternativa, si potrebbe considerare l'utilizzo di altre tecniche per ridurre il consumo di corrente, come ad esempio la messa in sleep mode dei componenti non utilizzati o la riduzione della frequenza di clock del microcontrollore.
