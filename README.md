@@ -26,3 +26,60 @@ d.temperature()
 d.humidity()
 ```
 La lettura cadenzata può essere fatta gestendo il deep sleep. Es. https://community.m5stack.com/topic/2874/deep-sleep-with-micropython
+
+Per mettere l'M5StickC in deep sleep puoi utilizzare la seguente istruzione:
+
+```python
+machine.deepsleep()
+```
+
+Questa istruzione metterà il dispositivo in sleep mode, riducendo il consumo di energia. Per impostare il tempo di sleep puoi utilizzare il parametro `time` della funzione `deepsleep`. Ad esempio, per impostare il sleep per 30 minuti (1800 secondi), puoi utilizzare la seguente istruzione:
+
+```python
+machine.deepsleep(1800000)
+```
+
+Per far risvegliare il dispositivo dopo il tempo impostato o dopo aver premuto il tasto M5, puoi utilizzare la funzione `deepsleep_wake_trigger` del modulo `esp`. Questa funzione accetta come parametro una maschera di bit che specifica il trigger per il risveglio. Ad esempio, per far risvegliare il dispositivo sia dopo il tempo impostato che dopo aver premuto il tasto M5, puoi utilizzare la seguente istruzione:
+
+
+```python
+import esp
+esp.deepsleep_wake_trigger(esp.DEEPSLEEP_WAKEUP_ALL_LOW |esp.DEEPSLEEP_WAKEUP_EXT0)
+```
+
+In questo modo il dispositivo si sveglierà sia quando il pin di trigger sarà basso (ovvero dopo il tempo impostato) che quando il pin `EXT0` (corrispondente al tasto M5) sarà premuto.
+
+Ecco un esempio di codice che mette l'M5StickC in deep sleep e lo fa risvegliare dopo 30 minuti o dopo aver premuto il tasto M5:
+
+```python
+import machine
+import esp
+from m5stack import btnA
+
+# Imposta il tempo di sleep a 30 minuti
+sleep_time = 1800000
+
+# Imposta i trigger per il risveglio
+esp.deepsleep_wake_trigger(esp.DEEPSLEEP_WAKEUP_ALL_LOW | esp.DEEPSLEEP_WAKEUP_EXT0)
+
+# Funzione per gestire la pressione del tasto M5
+def buttonA_wasPressed():
+    # Stampa un messaggio di debug
+    print('Button A pressed')
+    # Resetta il trigger di risveglio
+    esp.deepsleep_reset_wake_reason()
+    # Mette l'M5StickC in sleep mode
+    machine.deepsleep()
+
+# Imposta la callback per la pressione del tasto M5
+btnA.wasPressed(buttonA_wasPressed)
+
+# Stampa un messaggio di debug
+print('Entering deep sleep')
+
+# Mette l'M5StickC in sleep mode per il tempo impostato
+machine.deepsleep(sleep_time)
+```
+
+Questo codice farà entrare l'M5StickC in deep sleep e lo farà risvegliare dopo 30 minuti o dopo aver premuto il tasto M5. Quando il tasto M5 viene premuto, il trigger di risveglio viene resettato e il dispositivo viene messo in sleep mode.
+    
