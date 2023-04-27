@@ -25,6 +25,8 @@ d.measure()
 d.temperature()
 d.humidity()
 ```
+
+## Limitazione consumo di corrente
 La lettura cadenzata può essere fatta gestendo il deep sleep. Es. https://community.m5stack.com/topic/2874/deep-sleep-with-micropython
 
 Per mettere l'M5StickC in deep sleep puoi utilizzare la seguente istruzione:
