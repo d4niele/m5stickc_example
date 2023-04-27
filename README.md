@@ -141,3 +141,37 @@ machine.freq(240000000)
 ```
 
 In questo esempio, viene ridotta la frequenza di clock del microcontrollore a 80 MHz utilizzando l'istruzione `machine.freq(80000000)`. Successivamente, viene eseguito il codice principale, per poi ripristinare la frequenza di clock originale utilizzando l'istruzione `machine.freq(240000000)`.
+
+
+Di seguito è riportato un esempio di codice per leggere il contatore di corrente dell'M5StickC utilizzando la libreria AXP:
+```python
+import axp202x
+
+# Crea un oggetto axp202x
+axp = axp202x.AXP202X()
+
+# Inizializza l'oggetto axp
+axp.init()
+
+# Leggi il contatore di corrente
+current = axp.read_current_cnt()
+
+# Stampa il valore del contatore di corrente
+print('Current = {}'.format(current))
+```
+Per sapere il valore corrente di carica della batteria, utilizza la funzione get_battery_charge_current() della libreria AXP. Di seguito è riportato un esempio di codice per leggere il valore corrente di carica della batteria:
+```python
+import axp202x
+
+# Crea un oggetto axp202x
+axp = axp202x.AXP202X()
+
+# Inizializza l'oggetto axp
+axp.init()
+
+# Leggi il valore corrente di carica della batteria
+charge_current = axp.get_battery_charge_current()
+
+# Stampa il valore corrente di carica della batteria
+print('Charge current = {} mA'.format(charge_current))
+```
