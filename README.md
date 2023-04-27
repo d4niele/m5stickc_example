@@ -49,7 +49,7 @@ esp.deepsleep_wake_trigger(esp.DEEPSLEEP_WAKEUP_ALL_LOW |esp.DEEPSLEEP_WAKEUP_EX
 
 In questo modo il dispositivo si sveglierà sia quando il pin di trigger sarà basso (ovvero dopo il tempo impostato) che quando il pin `EXT0` (corrispondente al tasto M5) sarà premuto.
 
-Ecco un esempio di codice che mette l'M5StickC in deep sleep e lo fa risvegliare dopo 30 minuti o dopo aver premuto il tasto M5:
+Ecco un esempio di codice che mette l'M5StickC in deep sleep e lo fa risvegliare dopo 30 minuti:
 
 ```python
 import machine
@@ -65,12 +65,7 @@ esp.deepsleep_wake_trigger(esp.DEEPSLEEP_WAKEUP_ALL_LOW | esp.DEEPSLEEP_WAKEUP_E
 
 # Funzione per gestire la pressione del tasto M5
 def buttonA_wasPressed():
-    # Stampa un messaggio di debug
-    print('Button A pressed')
-    # Resetta il trigger di risveglio
-    esp.deepsleep_reset_wake_reason()
-    # Mette l'M5StickC in sleep mode
-    machine.deepsleep()
+    pass
 
 # Imposta la callback per la pressione del tasto M5
 btnA.wasPressed(buttonA_wasPressed)
