@@ -87,7 +87,7 @@ Tuttavia, è importante notare che disabilitare questi regolatori di tensione po
 
 Quindi, se si decide di disabilitare i regolatori di tensione LDO2 e LDO3, è importante prestare attenzione alle specifiche dei componenti dell'M5StickC e alle condizioni di alimentazione per assicurarsi che il dispositivo funzioni correttamente. In alternativa, si potrebbe considerare l'utilizzo di altre tecniche per ridurre il consumo di corrente, come ad esempio la messa in sleep mode dei componenti non utilizzati o la riduzione della frequenza di clock del microcontrollore.
 
-Tre esempi di codice che utilizzano le tecniche descritte in precedenza per ridurre il consumo di corrente dell'M5StickC:
+Seguono tre esempi di codice che utilizzano le tecniche descritte in precedenza per ridurre il consumo di corrente dell'M5StickC:
 
 1. Utilizzo della modalità sleep:
 
