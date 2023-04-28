@@ -14,6 +14,7 @@ def buttonA_wasPressed():
     print('press M5')
     v = getValueDHT()
     print(v)
+    
     lcd.fill()
     lcd.text(lcd.CENTER, 25, 'TEMP: '+str(v[0]))
     lcd.text(lcd.CENTER, 45, 'UM: '+str(v[1]))
